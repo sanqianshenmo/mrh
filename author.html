@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>授权页面</title>
+  <style>
+    html,body,div {
+      height: 100%;
+    }
+    img {
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+<div><img src="./wait.gif" alt=""></div>
+<script>
+  window.onload = function () {
+    var search = window.location.search.slice(1);
+    var searchArr = search.split("&");
+    var code = searchArr[0].split("=")[1];
+    console.log(code)
+    //写cookies
+    function setCookie(c_name, value, expiredays){
+      var exdate=new Date();
+      exdate.setDate(exdate.getDate() + expiredays);
+      document.cookie=c_name+ "=" + escape(value) + ((expiredays==null) ? "" : ";expires="+exdate.toGMTString());
+    }
+    setCookie('mrh-code', code)
+    var isWxPayTest = false
+    if (isWxPayTest) {
+      window.location.href = 'http://www.mrhmr.com/h_mrh/#/author'
+    } else {
+      window.location.href = 'http://www.mrhmr.com/h_mrh/#/author'
+    }
+  }
+</script>
+</body>
+</html>
